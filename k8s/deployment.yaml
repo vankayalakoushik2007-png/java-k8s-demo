@@ -1,0 +1,26 @@
+
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: java-web-deployment
+
+spec:
+  replicas: 2
+
+  selector:
+    matchLabels:
+      app: java-web
+
+  template:
+    metadata:
+      labels:
+        app: java-web
+
+    spec:
+      containers:
+        - name: java-web
+          image: 24mis0341/java-k8s-demo:latest
+          ports:
+            - containerPort: 8080
+          imagePullPolicy: Always
